@@ -1,7 +1,30 @@
 // popup.js
 
+let backgroundAudio;
+
+function playBackgroundSound() {
+  backgroundAudio = new Audio('Loading.wav');
+  backgroundAudio.loop = true;
+  backgroundAudio.play();
+  backgroundAudio.volume = 0.4;
+}
+
+function stopBackgroundSound() {
+  if (backgroundAudio) {
+    backgroundAudio.pause();
+    backgroundAudio.currentTime = 0; // Reset to the start
+  }
+}
+
+function playNotificationSound() {
+  const audio = new Audio('Ready.mp3'); // Ensure the path is correct
+  audio.play();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Extension opened');
+
+  playBackgroundSound(); // Start playing the background sound
 
   const screenshotButton = document.getElementById('screenshot-button');
   screenshotButton.style.display = 'none';
@@ -41,6 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const audioPlayer = document.getElementById('audio-player');
             audioPlayer.src = 'https://visionvoice-3fe2867078e2.herokuapp.com/audio';
             audioPlayer.load();
+            stopBackgroundSound(); // Stop the background sound
+            playNotificationSound(); // Play the notification sound
           };
           reader.readAsDataURL(blob);
         } else {
