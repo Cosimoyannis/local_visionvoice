@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           sendResponse({ screenshotUrl: dataUrl });
         }
       });
-      return true; // Keeps the message channel open for sendResponse
+      return true;
     }
   });
   
