@@ -1,4 +1,4 @@
-document.getElementById('screenshot-button').addEventListener('click', async () => {
+/* document.getElementById('screenshot-button').addEventListener('click', async () => {
   try {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true }); // Get the active tab in the current window
     chrome.tabs.captureVisibleTab(tab.windowId, { format: 'png' }, async (dataUrl) => { // Capture visible part of the tab
@@ -43,3 +43,4 @@ document.getElementById('screenshot-button').addEventListener('click', async () 
     document.getElementById('result').innerHTML = `<p>Error: ${error.message}</p>`; // Display error message
   }
 });
+ */
